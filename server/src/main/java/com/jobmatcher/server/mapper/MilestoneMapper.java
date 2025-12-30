@@ -1,0 +1,64 @@
+package com.jobmatcher.server.mapper;
+
+import com.jobmatcher.server.domain.Contract;
+import com.jobmatcher.server.domain.Milestone;
+import com.jobmatcher.server.model.MilestoneRequestDTO;
+import com.jobmatcher.server.model.MilestoneResponseDTO;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MilestoneMapper {
+
+    public MilestoneResponseDTO toDto(Milestone entity) {
+        if (entity == null) {
+            return null;
+        }
+
+        return MilestoneResponseDTO.builder()
+                .id(entity.getId())
+                .contractId(entity.getContract().getId())
+                .contractId(entity.getContract().getId())
+                .title(entity.getTitle())
+                .description(entity.getDescription())
+                .amount(entity.getAmount())
+                .penaltyAmount(entity.getPenaltyAmount())
+                .bonusAmount(entity.getBonusAmount())
+                .estimatedDuration(entity.getEstimatedDuration())
+                .status(entity.getStatus())
+                .notes(entity.getNotes())
+                .plannedStartDate(entity.getPlannedStartDate())
+                .plannedEndDate(entity.getPlannedEndDate())
+                .actualStartDate(entity.getActualStartDate())
+                .actualEndDate(entity.getActualEndDate())
+                .priority(entity.getPriority())
+                .invoiceId(entity.getInvoice() != null ? entity.getInvoice().getId() : null)
+                .paymentId(entity.getPayment() != null ? entity.getPayment().getId() : null)
+                .build();
+    }
+
+    public Milestone toEntity(MilestoneRequestDTO dto, Contract contract) {
+        if (dto == null) {
+            return null;
+        }
+
+        Milestone entity = new Milestone();
+        entity.setContract(contract);
+
+        if (dto.getTitle() != null) entity.setTitle(dto.getTitle());
+        if (dto.getDescription() != null) entity.setDescription(dto.getDescription());
+        if (dto.getAmount() != null) entity.setAmount(dto.getAmount());
+        if (dto.getPenaltyAmount() != null) entity.setPenaltyAmount(dto.getPenaltyAmount());
+        if (dto.getBonusAmount() != null) entity.setBonusAmount(dto.getBonusAmount());
+        if (dto.getEstimatedDuration() != null) entity.setEstimatedDuration(dto.getEstimatedDuration());
+        if (dto.getStatus() != null) entity.setStatus(dto.getStatus());
+        if (dto.getNotes() != null) entity.setNotes(dto.getNotes());
+        if (dto.getPlannedStartDate() != null) entity.setPlannedStartDate(dto.getPlannedStartDate());
+        if (dto.getPlannedEndDate() != null) entity.setPlannedEndDate(dto.getPlannedEndDate());
+        if (dto.getActualStartDate() != null) entity.setActualStartDate(dto.getActualStartDate());
+        if (dto.getActualEndDate() != null) entity.setActualEndDate(dto.getActualEndDate());
+        if (dto.getPriority() != null) entity.setPriority(dto.getPriority());
+
+        return entity;
+    }
+
+}

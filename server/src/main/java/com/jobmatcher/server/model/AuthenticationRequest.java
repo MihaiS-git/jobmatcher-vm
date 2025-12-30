@@ -1,0 +1,26 @@
+package com.jobmatcher.server.model;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+
+@Getter
+@Setter
+@RequiredArgsConstructor
+public class AuthenticationRequest {
+
+    @NotBlank
+    @Pattern(
+            regexp = "^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+$",
+            message = "Please enter a valid email."
+    )
+    @Schema(example = "user0@jobmatcher.com")
+    private String email;
+
+    @NotBlank
+    @Size(min=10, message="Password must be at least 10 characters")
+    @Schema(example = "Password!23")
+    private String password;
+}
