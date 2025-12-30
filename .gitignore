@@ -41,10 +41,6 @@ target/
 *.class
 *.log
 
-### application ###
-application.properties
-application-test.properties
-
 ### Data-init ###
 data-init/
 
