@@ -31,5 +31,5 @@ jobs:
           file: ./server/Dockerfile
           push: true
           tags: |
-            ghcr.io/ingsuciumihai/jobmatcher-backend-vm:latest
-            ghcr.io/ingsuciumihai/jobmatcher-backend-vm:${{ github.sha }}
+            ghcr.io/MihaiS-git/jobmatcher-backend-vm:latest
+            ghcr.io/MihaiS-git/jobmatcher-backend-vm:${{ github.sha }}
