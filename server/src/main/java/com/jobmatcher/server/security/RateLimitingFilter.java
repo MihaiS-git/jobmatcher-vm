@@ -22,29 +22,25 @@ public class RateLimitingFilter extends OncePerRequestFilter {
 
     private final Map<String, SlidingWindow> userRequests = new ConcurrentHashMap<>();
 
-    @Override
+     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        // Bypass rate limiting for localhost (development)
-        if ("127.0.0.1".equals(request.getRemoteAddr())) {
+
+        String uri = request.getRequestURI();
+
+        // Bypass infra endpoints
+        if (uri.startsWith("/actuator")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // Log each request for monitoring
-        log.info("🔥 RateLimitingFilter executing for: {}", request.getRequestURI());
-
-        String userKey = request.getRemoteAddr(); // fallback to IP if anonymous
-
-        // optionally extract username from JWT if available
-        String authHeader = request.getHeader("Authorization");
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            userKey = authHeader.substring(7); // simple token key; can be username
-        }
-
+        String userKey = request.getRemoteAddr();
         long now = System.currentTimeMillis();
-        SlidingWindow window = userRequests.computeIfAbsent(userKey, k -> new SlidingWindow(0, now));
+
+        SlidingWindow window = userRequests.computeIfAbsent(
+                userKey, k -> new SlidingWindow(0, now)
+        );
 
         synchronized (window) {
             if (now - window.startTime >= WINDOW_MS) {
@@ -54,7 +50,7 @@ public class RateLimitingFilter extends OncePerRequestFilter {
 
             window.count++;
             if (window.count > MAX_REQUESTS) {
-                System.out.println("RATE LIMIT TRIGGERED for key: " + userKey);
+                log.warn("Rate limit exceeded for IP: {}", userKey);
                 response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
                 response.setContentType("application/json");
                 response.getWriter().write("{\"error\":\"Too many requests\"}");

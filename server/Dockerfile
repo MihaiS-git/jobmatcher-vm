@@ -14,7 +14,7 @@ FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 
-# Install libwebp
+# Install libwebp & curl
 RUN apk add --no-cache libwebp-tools curl
 
 COPY --from=builder /app/build/libs/server-0.0.1-SNAPSHOT.jar /app/app.jar
