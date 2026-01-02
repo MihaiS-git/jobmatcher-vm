@@ -52,12 +52,13 @@ public class AuthenticationService {
     );
 
     public String authenticate(AuthenticationRequest request) {
-        log.info("User {} is attempting to authenticate.", request.getEmail());
+        log.debug("Authentication attempt");
 
         if (appProperties.demoMode() && !DEMO_USERS.contains(request.getEmail())) {
+            log.warn("Authentication rejected: demo mode restriction");
             throw new ResponseStatusException(
                     HttpStatus.FORBIDDEN,
-                    "Only demo accounts are allowed"
+                    "Only demo accounts are allowed."
             );
         }
 
@@ -65,31 +66,31 @@ public class AuthenticationService {
                 .orElseThrow(() -> new InvalidAuthException("Invalid email or password"));
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            log.warn("Bad credentials for email: {}", request.getEmail());
+            log.warn("Authentication failed: bad credentials");
             throw new InvalidAuthException("Invalid email or password");
         }
 
         if (!user.isEnabled()) {
-            log.warn("Account is disabled for email: {}", request.getEmail());
+            log.warn("Authentication failed: account disabled");
             throw new InvalidAuthException("Account is disabled");
         }
 
         if (!user.isAccountNonLocked()) {
-            log.warn("Account is locked for email: {}", request.getEmail());
+            log.warn("Authentication failed: account locked");
             throw new InvalidAuthException("Account is locked");
         }
 
         if (!user.isAccountNonExpired()) {
-            log.warn("Account is expired for email: {}", request.getEmail());
+            log.warn("Authentication failed: account expired");
             throw new InvalidAuthException("Account is expired");
         }
 
         if (!user.isCredentialsNonExpired()) {
-            log.warn("Credentials are expired for email: {}", request.getEmail());
+            log.warn("Authentication failed: credentials expired");
             throw new InvalidAuthException("Credentials are expired");
         }
 
-        log.info("User {} authenticated successfully with role {}", user.getEmail(), user.getRole());
+        log.info("Authentication successful");
         return jwtService.generateToken(user);
     }
 
