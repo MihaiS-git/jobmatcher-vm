@@ -146,6 +146,7 @@ public class SecurityConfiguration {
                         "/v3/api-docs/**",
                         "/swagger-ui/**",
                         "/swagger-ui.html",
+                        "/actuator/health/**",
                         "/error"
                 ).permitAll()
 
@@ -178,6 +179,7 @@ public class SecurityConfiguration {
                         "/v3/api-docs/**",
                         "/swagger-ui/**",
                         "/swagger-ui.html",
+                        "/actuator/health/**",
                         "/error"
                 ).permitAll()
                 .requestMatchers("/actuator/prometheus").hasRole("PROMETHEUS")
