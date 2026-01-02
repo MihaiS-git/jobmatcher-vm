@@ -1,3 +1,12 @@
+version: "3.9"
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  pgdata:
+
 services:
   postgres:
     image: postgres:16-alpine
@@ -6,19 +15,20 @@ services:
     environment:
       POSTGRES_DB: jobmatcher
       POSTGRES_USER: jobmatcher
-      POSTGRES_PASSWORD: jobmatcher
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U jobmatcher"]
-      interval: 10s
+      test: ["CMD-SHELL", "pg_isready -U jobmatcher -d jobmatcher"]
+      interval: 5s
       timeout: 5s
       retries: 5
     networks:
       - internal
 
   backend:
-    build: src
+    image: ghcr.io/mihais-git/jobmatcher-vm:latest
     container_name: jobmatcher-backend
     env_file: .env
     depends_on:
@@ -26,17 +36,14 @@ services:
         condition: service_healthy
     ports:
       - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:8080/actuator/health"]
-      interval: 15s
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health/liveness"]
+      interval: 30s
       timeout: 5s
       retries: 5
+      start_period: 40s
+
     networks:
       - internal
-
-networks:
-  internal:
-    driver: bridge
-
-volumes:
-  pgdata:
