@@ -45,7 +45,7 @@ target/
 data-init/
 
 ### Monitoring ###
-#prometheus.yml
+prometheus.yml
 
 ############################
 # Environment / Secrets
@@ -59,7 +59,7 @@ data-init/
 ############################
 .docker/
 **/.dockerignore
-docker-compose.yaml
+docker-compose.yml
 docker-compose.override.yml
 
 ############################
