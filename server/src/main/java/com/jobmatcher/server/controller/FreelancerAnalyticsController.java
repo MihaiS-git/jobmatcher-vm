@@ -1,6 +1,5 @@
 package com.jobmatcher.server.controller;
 
-import com.jobmatcher.server.domain.Skill;
 import com.jobmatcher.server.model.analytics.freelancer.JobCompletionDTO;
 import com.jobmatcher.server.model.analytics.freelancer.MonthlyEarningsDTO;
 import com.jobmatcher.server.model.analytics.freelancer.SkillEarningsDTO;

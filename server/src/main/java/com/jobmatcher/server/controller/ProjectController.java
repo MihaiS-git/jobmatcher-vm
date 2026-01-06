@@ -1,6 +1,5 @@
 package com.jobmatcher.server.controller;
 
-import com.jobmatcher.server.domain.ProjectStatus;
 import com.jobmatcher.server.model.*;
 import com.jobmatcher.server.service.IProjectService;
 import jakarta.validation.Valid;

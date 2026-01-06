@@ -4,7 +4,6 @@ import com.jobmatcher.server.model.PortfolioItemDetailDTO;
 import com.jobmatcher.server.model.PortfolioItemRequestDTO;
 import com.jobmatcher.server.model.PortfolioItemSummaryDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;

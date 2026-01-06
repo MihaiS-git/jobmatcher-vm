@@ -4,7 +4,6 @@ import com.jobmatcher.server.domain.Invoice;
 import com.jobmatcher.server.domain.Role;
 import com.jobmatcher.server.model.InvoiceFilterDTO;
 import jakarta.persistence.criteria.JoinType;
-import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 

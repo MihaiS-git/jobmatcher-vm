@@ -2,7 +2,6 @@ package com.jobmatcher.server.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jobmatcher.server.domain.PaymentType;
-import com.jobmatcher.server.domain.ProjectStatus;
 import com.jobmatcher.server.validator.CreateUpdateValidation;
 import jakarta.validation.constraints.*;
 import lombok.Builder;

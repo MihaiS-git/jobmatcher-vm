@@ -1,6 +1,5 @@
 package com.jobmatcher.server.model;
 
-import com.jobmatcher.server.domain.PaymentStatus;
 import com.jobmatcher.server.domain.Priority;
 import com.jobmatcher.server.domain.ProposalStatus;
 import lombok.Builder;
@@ -8,7 +7,6 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.Set;
 import java.util.UUID;
 
 @Getter

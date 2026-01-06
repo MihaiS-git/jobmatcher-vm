@@ -1,14 +1,11 @@
 package com.jobmatcher.server.bootstrap;
 
 import com.jobmatcher.server.domain.*;
-import com.jobmatcher.server.exception.ResourceNotFoundException;
 import com.jobmatcher.server.repository.*;
 import com.jobmatcher.server.service.ISkillService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +18,6 @@ import java.util.Set;
 public class UserDataSeeder implements ApplicationRunner {
 
     private final UserRepository userRepository;
-    private final AddressRepository addressRepository;
     private final FreelancerProfileRepository freelancerProfileRepository;
     private final CustomerProfileRepository customerProfileRepository;
     private final JobSubcategoryRepository jobSubcategoryRepository;
@@ -32,7 +28,6 @@ public class UserDataSeeder implements ApplicationRunner {
 
     public UserDataSeeder(
             UserRepository userRepository,
-            AddressRepository addressRepository,
             FreelancerProfileRepository freelancerProfileRepository,
             CustomerProfileRepository customerProfileRepository,
             JobSubcategoryRepository jobSubcategoryRepository,
@@ -41,7 +36,6 @@ public class UserDataSeeder implements ApplicationRunner {
             PasswordEncoder passwordEncoder
     ) {
         this.userRepository = userRepository;
-        this.addressRepository = addressRepository;
         this.freelancerProfileRepository = freelancerProfileRepository;
         this.customerProfileRepository = customerProfileRepository;
         this.jobSubcategoryRepository = jobSubcategoryRepository;

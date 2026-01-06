@@ -2,14 +2,8 @@ package com.jobmatcher.server.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jobmatcher.server.controller.config.AbstractIntegrationTest;
-import com.jobmatcher.server.domain.Contract;
 import com.jobmatcher.server.domain.CustomerProfile;
-import com.jobmatcher.server.domain.Invoice;
-import com.jobmatcher.server.domain.InvoiceStatus;
-import com.jobmatcher.server.repository.CustomerAnalyticsRepository;
 import com.jobmatcher.server.repository.CustomerProfileRepository;
-import com.jobmatcher.server.repository.ContractRepository;
-import com.jobmatcher.server.repository.InvoiceRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

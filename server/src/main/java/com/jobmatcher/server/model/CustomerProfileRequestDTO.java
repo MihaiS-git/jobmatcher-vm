@@ -3,7 +3,6 @@ package com.jobmatcher.server.model;
 import com.jobmatcher.server.validator.ValidWebsiteUrl;
 import com.jobmatcher.server.validator.ValidWebsiteUrlCollection;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Getter;

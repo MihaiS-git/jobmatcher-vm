@@ -6,8 +6,6 @@ import org.owasp.html.HtmlPolicyBuilder;
 import org.owasp.html.PolicyFactory;
 
 import java.text.Normalizer;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class SanitizationUtil {

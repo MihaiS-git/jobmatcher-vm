@@ -3,7 +3,6 @@ package com.jobmatcher.server.service;
 import com.jobmatcher.server.model.CustomerDetailDTO;
 import com.jobmatcher.server.model.CustomerProfileRequestDTO;
 import com.jobmatcher.server.model.CustomerSummaryDTO;
-import com.jobmatcher.server.model.FreelancerDetailDTO;
 
 import java.util.Set;
 import java.util.UUID;

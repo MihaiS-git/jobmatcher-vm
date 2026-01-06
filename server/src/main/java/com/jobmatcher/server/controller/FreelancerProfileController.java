@@ -2,14 +2,12 @@ package com.jobmatcher.server.controller;
 
 import com.jobmatcher.server.model.FreelancerDetailDTO;
 import com.jobmatcher.server.model.FreelancerProfileRequestDTO;
-import com.jobmatcher.server.model.FreelancerSummaryDTO;
 import com.jobmatcher.server.service.IFreelancerProfileService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.Set;
 import java.util.UUID;
 
 import static com.jobmatcher.server.model.ApiConstants.API_VERSION;

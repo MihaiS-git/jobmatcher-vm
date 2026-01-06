@@ -3,7 +3,6 @@ package com.jobmatcher.server.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jobmatcher.server.model.ErrorCode;
 import com.jobmatcher.server.model.ErrorResponse;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;

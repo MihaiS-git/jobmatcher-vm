@@ -17,7 +17,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import static com.jobmatcher.server.model.ApiConstants.API_VERSION;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;

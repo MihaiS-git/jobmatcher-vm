@@ -6,7 +6,6 @@ import com.jobmatcher.server.exception.ResourceNotFoundException;
 import com.jobmatcher.server.mapper.FreelancerProfileMapper;
 import com.jobmatcher.server.model.FreelancerDetailDTO;
 import com.jobmatcher.server.model.FreelancerProfileRequestDTO;
-import com.jobmatcher.server.model.FreelancerSummaryDTO;
 import com.jobmatcher.server.repository.*;
 import com.jobmatcher.server.util.SanitizationUtil;
 import lombok.extern.slf4j.Slf4j;
