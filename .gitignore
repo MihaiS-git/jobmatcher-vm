@@ -45,7 +45,7 @@ target/
 data-init/
 
 ### Monitoring ###
-prometheus.yml
+#prometheus.yml
 
 ############################
 # Environment / Secrets
